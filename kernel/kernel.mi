@@ -1,0 +1,27 @@
+declare shader
+    color "td_scalar_kernel" (
+	color "color" default 1 1 1,
+	shader "density_shader",
+	shader "deform_shader",
+	scalar "unit_density" default 1,
+	scalar "march_increment" default 0.1,
+	array light "lights"
+    )
+    version 1
+    apply volume
+end declare
+
+
+declare shader
+	vector "td_world_coord"()
+	version 1
+	apply volume
+end declare
+
+declare shader
+	scalar "td_gray"(
+	scalar "gray" default 1)
+	version 1
+	apply volume
+end declare
+
