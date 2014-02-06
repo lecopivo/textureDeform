@@ -1,6 +1,52 @@
 #include "shader.h"
 #include "miaux.h"
 
+
+struct td_scalar_kernel {
+  miVector point;
+  miScalar value;
+};
+
+extern "C"
+DLLEXPORT
+int td_scalar_kernel_version(void){return 1;}
+
+extern "C"
+DLLEXPORT
+miBoolean td_scalar_kernel ( miScalar *result, miState *state, struct td_scalar_kernel *params ){
+
+  miVector newPoint = *mi_eval_vector( &params->point );
+
+  state->point = newPoint;
+
+  *result = *mi_eval_scalar( &params->value );
+  
+  return miTRUE;
+}
+
+struct td_color_kernel {
+  miVector point;
+  miColor color;
+};
+
+extern "C"
+DLLEXPORT
+int td_color_kernel_version(void){return 1;}
+
+extern "C"
+DLLEXPORT
+miBoolean td_color_kernel ( miColor *result, miState *state, struct td_color_kernel *params ){
+  
+  miVector newPoint = *mi_eval_vector( &params->point );
+
+  state->point = newPoint;
+
+  *result = *mi_eval_color( &params->color );
+
+  return miTRUE;
+}
+
+/*
 struct td_scalar_kernel {
   miColor color;
   miTag density_shader;
@@ -72,23 +118,9 @@ miBoolean td_scalar_kernel (
   }
   return miTRUE;
 }
+*/
 
-
-struct td_world_coord{
-};
-
-extern "C"
-DLLEXPORT
-int td_world_coord_version(void){return 1;}
-
-extern "C"
-DLLEXPORT
-miBoolean td_world_coord(miVector *result, miState *state, struct td_world_coord *params)
-{
-  *result = state->point;
-  return miTRUE;
-}
-
+/*
 extern "C"
 DLLEXPORT
 int td_gray_version(void) { return 1; }
@@ -106,3 +138,26 @@ miBoolean td_gray (
 
     return miTRUE;
 }
+
+declare shader
+    color "td_scalar_kernel" (
+	color "color" default 1 1 1,
+	shader "density_shader",
+	shader "deform_shader",
+	scalar "unit_density" default 1,
+	scalar "march_increment" default 0.1,
+	array light "lights"
+    )
+    version 1
+    apply volume
+end declare
+
+
+declare shader
+	scalar "td_gray"(
+	scalar "gray" default 1)
+	version 1
+	apply volume
+end declare
+
+*/

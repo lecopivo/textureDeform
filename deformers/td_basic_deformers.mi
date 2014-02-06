@@ -1,0 +1,4 @@
+declare shader
+	vector "td_identity"()
+	version 1
+end declare
