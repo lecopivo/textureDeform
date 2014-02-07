@@ -8,4 +8,5 @@ include( MayaBuildConf.cmake )
 
 add_subdirectory( kernel )
 add_subdirectory( deformers )
+add_subdirectory( textures )
 

@@ -1,5 +1,5 @@
 # source filesHelloWorld
-set (MR_SRC kernel.cpp miaux.cpp)
+set (MR_SRC kernel.cpp )
 
 # mr .mi files
 set (MR_MI_FILES kernel.mi)

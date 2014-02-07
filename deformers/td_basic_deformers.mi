@@ -2,3 +2,68 @@ declare shader
 	vector "td_identity"()
 	version 1
 end declare
+
+declare shader
+	vector "td_affine"(
+	       vector "point",
+	       transform "matrix",
+	       transform "inverseMatrix"
+	       )
+	version 1
+end declare
+
+declare shader
+	vector "td_flare"(
+	       scalar "lowBound" default -1,
+	       scalar "highBound" default 1,
+	       scalar "startFlareX" default 1,
+	       scalar "startFlareZ" default 1,
+	       scalar "endFlareX" default 1,
+	       scalar "endFlareZ" default 1,
+	       scalar "curve" default 0,
+	       vector "point",
+	       transform "matrix",
+	       transform "inverseMatrix"
+	       )
+	version 1
+end declare
+
+declare shader
+	vector "td_twist"(
+	       scalar "lowBound" default -1,
+	       scalar "highBound" default 1,
+	       scalar "startAngle" default 0,
+	       scalar "endAngle" default 0,
+	       vector "point",
+	       transform "matrix",
+	       transform "inverseMatrix"
+	       )
+	version 1
+end declare
+
+declare shader
+	vector "td_sine"(
+	       scalar "lowBound" default -1,
+	       scalar "highBound" default 1,
+	       scalar "amplitude" default 1,
+	       scalar "wavelenght" default 2,
+	       scalar "offset" default 0,
+	       scalar "dropoff" default 0,
+	       vector "point",
+	       transform "matrix",
+	       transform "inverseMatrix"
+	       )
+	version 1
+end declare
+
+declare shader
+	vector "td_bend"(
+	       scalar "lowBound" default -1,
+	       scalar "highBound" default 1,
+	       scalar "curvature" default 0,
+	       vector "point",
+	       transform "matrix",
+	       transform "inverseMatrix"
+	       )
+	version 1
+end declare
