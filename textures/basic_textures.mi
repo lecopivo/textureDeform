@@ -1,0 +1,41 @@
+declare shader
+    color "td_simple_color" (
+    	   color "color"
+	   )
+    version 1
+end declare
+
+declare shader
+    color "td_color_checker" (
+    	   scalar "side" default 1,
+	   color "color1",
+	   color "color2"
+	   )
+    version 1
+end declare
+
+declare shader
+    scalar "td_scalar_checker" (
+    	   scalar "side" default 1,
+	   scalar "value1",
+	   scalar "value2"
+	   )
+    version 1
+end declare
+
+declare shader
+    scalar "td_box" (
+    	   scalar "side" default 1,
+	   scalar "value" default 1
+	   )
+    version 1
+end declare    
+	   
+declare shader
+    scalar "td_radial_falloff" (
+	scalar "radius" default 1,
+	scalar "center_value" default 1,
+        scalar "radius_value" default 0	
+    )
+    version 1
+end declare
